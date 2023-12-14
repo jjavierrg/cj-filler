@@ -23,11 +23,12 @@ Para utilizar el script, primero debes instalar la extensión de tampermonkey en
 [Safari](https://apps.apple.com/es/app/tampermonkey/id1482490089?mt=12).
 
 Una vez instalada la extensión, puedes instalar el script haciendo click en el siguiente enlace:
-[![Instalar](https://img.shields.io/badge/Instalar%20script-blue?style=for-the-badge)](raw/scripts/cj-filler.user.js)
+
+[![Instalar](https://img.shields.io/badge/Instalar%20script-blue?style=for-the-badge)](https://github.com/jjavierrg/cj-filler/raw/main/scripts/cj-filler.user.js)
 
 ### Instalación directa
 
-Cuando estés en la página de creación de un customer journey, puedes abrir la devtools de tu navegador y pegar el contenido del archivo [scripts/cj-filler.user.js](raw/scripts/cj-filler.user.js) en la consola. Esto cargará el script en la página y podrás utilizarlo. Este método no es persistente, por lo que tendrás que repetirlo cada vez que recargues la página y tendrás que volver a este repositorio siempre que quieras obtener el script actualizado.
+Cuando estés en la página de creación de un customer journey, puedes abrir la devtools de tu navegador y pegar el contenido del archivo [scripts/cj-filler.user.js](scripts/cj-filler.user.js) en la consola. Esto cargará el script en la página y podrás utilizarlo. Este método no es persistente, por lo que tendrás que repetirlo cada vez que recargues la página y tendrás que volver a este repositorio siempre que quieras obtener el script actualizado.
 
 ## Uso
 
