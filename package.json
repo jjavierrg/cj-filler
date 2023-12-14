@@ -1,0 +1,39 @@
+{
+  "name": "cj-filler",
+  "version": "1.0.0",
+  "description": "Simple tool to automatically fill the CJ form",
+  "type": "module",
+  "author": "José Javier Rodríguez Gallego <jjavierrg@gmail.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node dist/src/main.js",
+    "clean": "rimraf coverage dist tmp",
+    "prebuild": "npm run lint",
+    "build": "webpack --mode production",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "lint": "eslint . --ext .ts",
+    "test": "jest --coverage",
+    "prettier": "prettier --config .prettierrc --write .",
+    "test:watch": "jest --watch",
+    "update-version": "npm version patch --no-git-tag-version"
+  },
+  "devDependencies": {
+    "@types/jest": "~29.5",
+    "@types/node": "~18",
+    "@typescript-eslint/eslint-plugin": "~6.2",
+    "@typescript-eslint/parser": "~6.2",
+    "eslint": "~8.46",
+    "eslint-config-prettier": "~9.0",
+    "eslint-plugin-jest": "~27.2",
+    "jest": "~29.6",
+    "prettier": "~3.0",
+    "rimraf": "~5.0",
+    "ts-api-utils": "~1.0",
+    "ts-jest": "~29.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "tslib": "~2.6"
+  }
+}

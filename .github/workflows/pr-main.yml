@@ -1,0 +1,42 @@
+name: Pull request to main
+
+permissions:
+  checks: write
+  contents: write
+
+on:
+  pull_request:
+    branches: ['main']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛒 Checkout
+        uses: actions/checkout@v3
+
+      - name: 🚚 Restore
+        run: npm ci --no-audit
+
+      - name: 🧪 Test
+        run: npm test -- --passWithNoTests
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛒 Checkout
+        uses: actions/checkout@v3
+
+      - name: 🚚 Restore
+        run: npm ci --no-audit
+
+      - name: 🧹 Lint
+        uses: wearerequired/lint-action@v2
+        with:
+          auto_fix: true
+          eslint: true
+          eslint_extensions: ts
+          git_name: github-actions[bot]
+          git_email: github-actions[bot]@users.noreply.github.com

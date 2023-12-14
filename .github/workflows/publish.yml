@@ -1,0 +1,50 @@
+name: Generate release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛒 Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 🚚 Restore
+        run: npm ci --no-audit
+
+      - name: 🏷️ Get last tag
+        id: last-tag
+        run: |
+          tag=$(git describe --tags --abbrev=0)
+          echo "tag=$tag" >> $GITHUB_ENV
+          echo "last tag: $tag"
+
+      - name: 📦 Get package version
+        id: package-version
+        run: |
+          version=$(npm pkg get version | tr -d '"')
+          echo "version=$version" >> $GITHUB_ENV
+          echo "package version: $version"
+
+      - name: 🏗️ Build
+        if: env.tag != env.version
+        run: npm run build --if-present
+
+      - name: 🚀 Publish release
+        if: env.tag != env.version
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/filler.js
+          tag_name: ${{ env.version }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          name: 'Release ${{ env.version }}'
