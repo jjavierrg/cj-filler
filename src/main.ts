@@ -22,7 +22,8 @@ async function LoadPlans(parentSelector: string): Promise<void> {
   const container = document.createElement('div');
   const button = document.createElement('button');
   const select = document.createElement('select');
-  plans.forEach((plan, index) => {
+
+  plans.sort().forEach((plan, index) => {
     const option = document.createElement('option');
     option.value = index.toString();
     option.innerText = plan.name;
