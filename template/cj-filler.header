@@ -1,0 +1,15 @@
+// ==UserScript==
+// @name         CJ Filler
+// @namespace    http://tampermonkey.net/
+// @version      {{package.version}}
+// @description  Fill customer journey form with data for testing purposes only! Do not use in production! Use at your own risk! You have been warned!
+// @author       {{package.author}}
+// @match        https://seguros-coche-preprod.rastreator.com/datos-comparativa*
+// @match        https://seguros-coche.rastreatordevtest.com/datos-comparativa*
+// @match        https://seguros-coche.rastreatortest.com/datos-comparativa*
+// @match        https://seguros-coche.rastreator.com/datos-comparativa*
+// @icon         https://www.rastreator.com/wp-content/themes/rastreator/favicon-32x32.png
+// @grant        none
+// @downloadURL  https://github.com/jjavierrg/cj-filler/raw/main/scripts/cj-filler.user.js
+// @updateURL    https://github.com/jjavierrg/cj-filler/raw/main/scripts/cj-filler.user.js
+// ==/UserScript==

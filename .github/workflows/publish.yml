@@ -5,7 +5,7 @@ permissions:
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
 jobs:
   publish:
@@ -42,9 +42,9 @@ jobs:
         if: env.tag != env.version
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/filler.js
+          files: dist/cj-filler.user.js
           tag_name: ${{ env.version }}
           draft: false
           prerelease: false
           generate_release_notes: true
-          name: 'Release ${{ env.version }}'
+          name: "Release ${{ env.version }}"
