@@ -2,6 +2,8 @@
 
 [![Licencia](https://img.shields.io/badge/Licencia-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Estado del proyecto](https://img.shields.io/badge/Estado-Activo-brightgreen.svg)](https://github.com/jjavierrg/cj-filler)
+[![Versión](https://img.shields.io/github/v/release/jjavierrg/cj-filler)](https://github.com/jjavierrg/cj-filler/releases/latest/)
+[![Build Status - GitHub Actions]([gha-badge]: https://github.com/jjavierrg/cj-filler/actions/workflows/publish.yml/badge.svg)](https://github.com/jjavierrg/cj-filler/actions/workflows/publish.yml)
 
 ## Descripción
 
@@ -24,15 +26,17 @@ Para utilizar el script, primero debes instalar la extensión de tampermonkey en
 
 Una vez instalada la extensión, puedes instalar el script haciendo click en el siguiente enlace:
 
-[![Instalar](https://img.shields.io/badge/Instalar%20script-blue?style=for-the-badge)](https://github.com/jjavierrg/cj-filler/raw/main/scripts/cj-filler.user.js)
+[![Instalar](https://img.shields.io/badge/Instalar%20script-blue?style=for-the-badge)](https://github.com/jjavierrg/cj-filler/releases/latest/download/cj-filler.user.js)
 
 ### Instalación directa
 
-Cuando estés en la página de creación de un customer journey, puedes abrir la devtools de tu navegador y pegar el contenido del archivo [scripts/cj-filler.user.js](scripts/cj-filler.user.js) en la consola. Esto cargará el script en la página y podrás utilizarlo. Este método no es persistente, por lo que tendrás que repetirlo cada vez que recargues la página y tendrás que volver a este repositorio siempre que quieras obtener el script actualizado.
+Cuando estés en la página de creación de un customer journey, puedes abrir la devtools de tu navegador y pegar el contenido del archivo [cj-filler.user.js](https://github.com/jjavierrg/cj-filler/releases/latest/download/cj-filler.user.js) en la consola. Esto cargará el script en la página y podrás utilizarlo. Este método no es persistente, por lo que tendrás que repetirlo cada vez que recargues la página y tendrás que volver a este repositorio siempre que quieras obtener el script actualizado.
 
 ## Uso
 
-Explica cómo utilizar el proyecto y proporciona ejemplos de código si es necesario. Puedes incluir capturas de pantalla o enlaces a la documentación adicional.
+Una vez instalado el script, puedes utilizarlo en cualquier página de customer journey. Cuando abras la página, verás que aparece un deplegable y un nuevo botón en la parte superior de la página. El deplegable te permite seleccionar el plan de ejecución que quieres utilizar, y el botón comenzará la ejecución automáticamente. El script rellenará los campos de la página con los valores del plan de ejecución seleccionado y avanzará automáticamente hasta el final del customer journey.
+
+En caso de que el script no funcione correctamente, prueba a recargar la página y a ejecutarlo de nuevo.
 
 ## Soporte
 

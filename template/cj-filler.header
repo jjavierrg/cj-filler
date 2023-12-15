@@ -10,6 +10,6 @@
 // @match        https://seguros-coche.rastreator.com/datos-comparativa*
 // @icon         https://www.rastreator.com/wp-content/themes/rastreator/favicon-32x32.png
 // @grant        none
-// @downloadURL  https://github.com/jjavierrg/cj-filler/raw/main/scripts/cj-filler.user.js
-// @updateURL    https://github.com/jjavierrg/cj-filler/raw/main/scripts/cj-filler.user.js
+// @downloadURL  https://github.com/jjavierrg/cj-filler/releases/latest/download/cj-filler.user.js
+// @updateURL    https://github.com/jjavierrg/cj-filler/releases/latest/download/cj-filler.user.js
 // ==/UserScript==
