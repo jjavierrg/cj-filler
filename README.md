@@ -3,7 +3,7 @@
 [![Licencia](https://img.shields.io/badge/Licencia-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Estado del proyecto](https://img.shields.io/badge/Estado-Activo-brightgreen.svg)](https://github.com/jjavierrg/cj-filler)
 [![Versión](https://img.shields.io/github/v/release/jjavierrg/cj-filler)](https://github.com/jjavierrg/cj-filler/releases/latest/)
-[![Build Status - GitHub Actions]([gha-badge]: https://github.com/jjavierrg/cj-filler/actions/workflows/publish.yml/badge.svg)](https://github.com/jjavierrg/cj-filler/actions/workflows/publish.yml)
+[![Build Status - GitHub Actions](https://github.com/jjavierrg/cj-filler/actions/workflows/publish.yml/badge.svg)](https://github.com/jjavierrg/cj-filler/actions/workflows/publish.yml)
 
 ## Descripción
 
