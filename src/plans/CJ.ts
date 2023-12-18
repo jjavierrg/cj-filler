@@ -1,5 +1,12 @@
 import { ICJ } from '../core/ICJ';
 import { ActionType } from '../enums/actions';
+import {
+  generateRandomEmail,
+  generateRandomName,
+  generateRandomStringBirthDate,
+  generateRandomSurname,
+  generateRandomTelephone,
+} from '../services/ramdom';
 
 export default <ICJ>{
   name: '[CAR] - 2a mano - carfax - todos tipos',
@@ -15,7 +22,7 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: '#KM11000' },
     { type: ActionType.CLICK, selector: '#span_No' },
     { type: ActionType.CLICK, selector: '#Two' },
-    { type: ActionType.TYPE, selector: 'vehicle-driver-dob input', stringValue: '01/01/1980' },
+    { type: ActionType.TYPE, selector: 'vehicle-driver-dob input', stringValueFunc: async (): Promise<string> => generateRandomStringBirthDate() },
     { type: ActionType.CLICK, selector: 'vehicle-driver-dob #btn_submit' },
     { type: ActionType.CLICK, selector: "div[title='España']" },
     { type: ActionType.SELECT, selector: '#CJDriverDetailsLicenceDate_Month', numericValue: 2 },
@@ -36,9 +43,13 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'who-policy-holder #MainDriver' },
     { type: ActionType.TYPE, selector: 'app-dni #txtDniNumber', stringValue: '12345678Z' },
     { type: ActionType.CLICK, selector: 'app-dni #btnDniClick' },
-    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtFistName', stringValue: 'Nombre' },
-    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtMiddleName', stringValue: 'PrimerApellido' },
-    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtLastName', stringValue: 'SegundoApellido' },
+    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtFistName', stringValueFunc: async (): Promise<string> => generateRandomName() },
+    {
+      type: ActionType.TYPE,
+      selector: 'app-policy-holder-name #txtMiddleName',
+      stringValueFunc: async (): Promise<string> => generateRandomSurname(),
+    },
+    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtLastName', stringValueFunc: async (): Promise<string> => generateRandomSurname() },
     { type: ActionType.CLICK, selector: 'app-policy-holder-name #btnPolicyHolderNameClick' },
     { type: ActionType.CLICK, selector: 'app-defaulter #defaulterNo' },
     { type: ActionType.CLICK, selector: 'app-isocassional-driver #No' },
@@ -47,8 +58,8 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'fine-details #No' },
     { type: ActionType.CLICK, selector: 'expected-policy-buy-date #btn_submit' },
     { type: ActionType.CLICK, selector: 'cover-type #next' },
-    { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', stringValue: 'automated@fromIt.com' },
-    { type: ActionType.TYPE, selector: 'email-with-tele #txtphone', stringValue: '614785236' },
+    { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
+    { type: ActionType.TYPE, selector: 'email-with-tele #txtphone', stringValueFunc: async (): Promise<string> => generateRandomTelephone() },
     { type: ActionType.CLICK, selector: 'email-with-tele .checkmark' },
     { type: ActionType.CLICK, selector: 'email-with-tele #btnEmailClick' },
   ],

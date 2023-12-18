@@ -16,14 +16,22 @@ export class TypeExecutor extends ExecutorBase {
     inputElement.focus();
     inputElement.click();
 
+    const value = await this.getValue(action, element);
+    if (value) {
+      inputElement.value = value;
+      this.fireEvent('input', inputElement);
+    }
+  }
+
+  private async getValue(action: ICJAction, element?: HTMLElement): Promise<string> {
     if (action.stringValue) {
-      inputElement.value = action.stringValue;
+      return action.stringValue;
     }
 
-    if (action.numericValue) {
-      inputElement.value = action.numericValue.toString();
+    if (action.stringValueFunc !== undefined && action.stringValueFunc !== null) {
+      return await action.stringValueFunc(element);
     }
 
-    this.fireEvent('input', inputElement);
+    return '';
   }
 }
