@@ -23,12 +23,14 @@ async function LoadPlans(parentSelector: string): Promise<void> {
   const button = document.createElement('button');
   const select = document.createElement('select');
 
-  plans.sort().forEach((plan, index) => {
-    const option = document.createElement('option');
-    option.value = index.toString();
-    option.innerText = plan.name;
-    select.appendChild(option);
-  });
+  plans
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach((plan, index) => {
+      const option = document.createElement('option');
+      option.value = index.toString();
+      option.innerText = plan.name;
+      select.appendChild(option);
+    });
 
   select.style.backgroundImage = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24'%3E%3Cdefs%3E%3Cpath id='a' d='M8.707 11.707l2.586 2.586a1 1 0 0 0 1.414 0l2.586-2.586A1 1 0 0 0 14.586 10H9.414a1 1 0 0 0-.707 1.707z'/%3E%3C/defs%3E%3Cuse fill='%23C2D1D9' fill-rule='evenodd' xlink:href='%23a'/%3E%3C/svg%3E")`;
   select.style.backgroundRepeat = 'no-repeat';

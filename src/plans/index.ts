@@ -1,4 +1,5 @@
 import { ICJ } from '../core/ICJ';
-import cj from './CJ';
+import carSegundaMano from './car-segunda-mano';
+import carSinMatricula from './car-sin-matricula';
 
-export default <ICJ[]>[cj];
+export default <ICJ[]>[carSinMatricula, carSegundaMano];

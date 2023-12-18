@@ -22,7 +22,11 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: '#KM11000' },
     { type: ActionType.CLICK, selector: '#span_No' },
     { type: ActionType.CLICK, selector: '#Two' },
-    { type: ActionType.TYPE, selector: 'vehicle-driver-dob input', stringValueFunc: async (): Promise<string> => generateRandomStringBirthDate() },
+    {
+      type: ActionType.TYPE,
+      selector: 'vehicle-driver-dob input',
+      stringValueFunc: async (): Promise<string> => generateRandomStringBirthDate({ minAge: 25 }),
+    },
     { type: ActionType.CLICK, selector: 'vehicle-driver-dob #btn_submit' },
     { type: ActionType.CLICK, selector: "div[title='España']" },
     { type: ActionType.SELECT, selector: '#CJDriverDetailsLicenceDate_Month', numericValue: 2 },

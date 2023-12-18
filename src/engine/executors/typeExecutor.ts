@@ -20,6 +20,7 @@ export class TypeExecutor extends ExecutorBase {
     if (value) {
       inputElement.value = value;
       this.fireEvent('input', inputElement);
+      this.fireEvent('keyup', inputElement);
     }
   }
 
