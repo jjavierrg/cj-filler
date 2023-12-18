@@ -21,17 +21,13 @@ export default {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'filler.js',
+    filename: 'cj-filler.user.js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     new builderPlugin({
       packageJsonPath: './package.json',
-      destinationFile: 'dist/cj-filler.user.js',
-      files: [
-        'template/cj-filler.header',
-        'dist/filler.js',
-      ]
+      file: 'dist/cj-filler.user.js'
     })
   ]
 };
