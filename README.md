@@ -28,6 +28,12 @@ Una vez instalada la extensión, puedes instalar el script haciendo click en el 
 
 [![Instalar](https://img.shields.io/badge/Instalar%20script-blue?style=for-the-badge)](https://github.com/jjavierrg/cj-filler/releases/latest/download/cj-filler.user.js)
 
+Esto abrirá una página en la que podrás ver el código del script. Haz click en el botón de instalar y la extensión se encargará de instalar el script en tu navegador. A partir de ahora, el script se ejecutará automáticamente en todas las páginas de customer journey.
+
+#### Actualización del script
+
+El script se actualizará automáticamente cada vez que se publique una nueva versión. Si quieres actualizarlo manualmente, puedes hacerlo desde la página de tampermonkey en tu navegador. Para ello, haz click en el icono de tampermonkey y selecciona la opción "Check for userscript updates" dentro del menú "Utilities". Esto abrirá una nueva página en la que podrás ver todos los scripts instalados y actualizarlos manualmente. Para actualizar únicamente el script de customer journey filler, lo puedes hacer desde la sección "updates" en el tab "settings" de la ficha del script.
+
 ### Instalación directa
 
 Cuando estés en la página de creación de un customer journey, puedes abrir la devtools de tu navegador y pegar el contenido del archivo [cj-filler.user.js](https://github.com/jjavierrg/cj-filler/releases/latest/download/cj-filler.user.js) en la consola. Esto cargará el script en la página y podrás utilizarlo. Este método no es persistente, por lo que tendrás que repetirlo cada vez que recargues la página y tendrás que volver a este repositorio siempre que quieras obtener el script actualizado.
