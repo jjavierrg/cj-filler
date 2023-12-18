@@ -16,7 +16,7 @@ export class SelectExecutor extends ExecutorBase {
       return Promise.reject('Element is not a select');
     }
 
-    const option = this.getOption(selectElement, action);
+    const option = await this.getOption(selectElement, action);
     if (!option) {
       return Promise.reject('Option not found');
     }
@@ -26,18 +26,27 @@ export class SelectExecutor extends ExecutorBase {
     selectElement.value = option.value;
 
     this.fireEvent('change', selectElement);
-    Promise.resolve();
   }
 
-  private getOption(selectElement: HTMLSelectElement, action: ICJAction): HTMLOptionElement {
+  private async getOption(selectElement: HTMLSelectElement, action: ICJAction): Promise<HTMLOptionElement> {
     const options = Array.from(selectElement.options);
 
-    if (action.numericValue) {
+    if (action.numericValue !== undefined && action.numericValue !== null) {
       return options[action.numericValue - 1];
+    }
+
+    if (action.numericValueFunc) {
+      const index = await action.numericValueFunc();
+      return options[index - 1];
     }
 
     if (action.stringValue) {
       return options.find((option) => option.text === action.stringValue);
+    }
+
+    if (action.stringValueFunc) {
+      const value = await action.stringValueFunc();
+      return options.find((option) => option.text === value);
     }
 
     return null;
