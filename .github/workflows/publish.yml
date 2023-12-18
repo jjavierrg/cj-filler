@@ -37,6 +37,8 @@ jobs:
       - name: 🏗️ Build
         if: env.tag != env.version
         run: npm run build --if-present
+        env:
+          TAMPERMONKEY_HEADER: ${{ vars.TAMPERMONKEY_HEADER }}
 
       - name: 🚀 Publish release
         if: env.tag != env.version
