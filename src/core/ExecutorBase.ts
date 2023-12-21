@@ -1,6 +1,8 @@
 import { ICJAction } from './ICJAction';
 import { IExecutor } from './IExecutor';
 
+const DEFAULT_TIMEOUT = 10000;
+
 export abstract class ExecutorBase implements IExecutor {
   constructor(public type: string) {}
 
@@ -33,7 +35,7 @@ export abstract class ExecutorBase implements IExecutor {
     await new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  protected async waitFor(condition: () => boolean, timeout: number = 3000): Promise<void> {
+  protected async waitFor(condition: () => boolean, timeout: number = DEFAULT_TIMEOUT): Promise<void> {
     const start = Date.now();
     while (Date.now() - start < timeout) {
       if (condition()) {
@@ -46,7 +48,7 @@ export abstract class ExecutorBase implements IExecutor {
     throw new Error('Timeout exceeded while waiting for condition');
   }
 
-  protected async waitForElement(selector: string, optional: boolean = false, timeout: number = 3000): Promise<HTMLElement> {
+  protected async waitForElement(selector: string, optional: boolean = false, timeout: number = DEFAULT_TIMEOUT): Promise<HTMLElement> {
     const isElementPresent = (): boolean => document.querySelector<HTMLElement>(selector) !== null;
 
     try {

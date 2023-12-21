@@ -9,6 +9,6 @@ export class WaitUntilEnabledExecutor extends ExecutorBase {
 
   protected async executeAction(action: ICJAction, element?: HTMLElement): Promise<void> {
     const isElementEnabledCondition = (): boolean => !element.hasAttribute('disabled');
-    this.waitFor(isElementEnabledCondition, action.timeout || 5000);
+    this.waitFor(isElementEnabledCondition, action.timeout || 10000);
   }
 }

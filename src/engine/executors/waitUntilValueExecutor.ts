@@ -13,6 +13,6 @@ export class WaitUntilValueExecutor extends ExecutorBase {
       return value.toUpperCase() === action.stringValue.toUpperCase();
     };
 
-    this.waitFor(elementHasValueCondition, action.timeout || 5000);
+    this.waitFor(elementHasValueCondition, action.timeout || 10000);
   }
 }

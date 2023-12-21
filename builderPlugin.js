@@ -28,8 +28,8 @@ class ConcatAndReplacePlugin {
       const regex = /{{package\.(.*?)}}/g;
       let replacedHeader = header.replace(regex, (_, key) => packageJson[key]);
 
-      if (!replacedHeader.endsWith('\n')) {
-        replacedHeader += '\n';
+      if (!replacedHeader.endsWith('\r\n') && !replacedHeader.endsWith('\n')) {
+        replacedHeader += '\r\n';
       }
 
       console.log(`[ConcatAndReplacePlugin]: writing header to ${this.file}`);
