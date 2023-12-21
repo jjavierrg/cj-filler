@@ -9,10 +9,10 @@ export class WaitUntilValueExecutor extends ExecutorBase {
 
   protected async executeAction(action: ICJAction, element?: HTMLElement): Promise<void> {
     const elementHasValueCondition = (): boolean => {
-      const value = element.innerText || element.getAttribute('value');
+      const value = element.innerText ?? element.getAttribute('value') ?? '';
       return value.toUpperCase() === action.stringValue.toUpperCase();
     };
 
-    this.waitFor(elementHasValueCondition, action.timeout || 5000);
+    this.waitFor(elementHasValueCondition, action.timeout || 10000);
   }
 }
