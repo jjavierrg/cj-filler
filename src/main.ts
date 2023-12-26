@@ -43,6 +43,7 @@ async function LoadPlans(parentSelector: string): Promise<void> {
   select.style.appearance = 'none';
   select.style.fontSize = '15px';
   select.style.padding = '19px 35px 19px 24px';
+  select.style.zIndex = '10';
 
   button.innerText = 'Fill CJ';
   button.addEventListener('click', () => RunCJ(select.selectedIndex));
