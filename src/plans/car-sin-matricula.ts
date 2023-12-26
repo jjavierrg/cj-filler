@@ -11,7 +11,12 @@ import {
 export default <ICJ>{
   name: '[CAR] - sin matrícula',
   actions: [
-    { type: ActionType.CLICK, selector: 'already-bought #ThinkingToBuying' },
+    {
+      type: ActionType.CLICK,
+      selector: 'already-bought #ThinkingToBuying',
+      optional: true,
+      executeIf: async (): Promise<boolean> => !window?.location?.hash || window?.location?.hash === '#Q1',
+    },
     { type: ActionType.CLICK, selector: 'make li[title="BMW"]' },
     { type: ActionType.CLICK, selector: 'model li[title="X1"]' },
     { type: ActionType.CLICK, selector: 'fuel-type #D' },
