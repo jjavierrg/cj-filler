@@ -35,6 +35,6 @@ export default <ICJ>{
     { type: ActionType.TYPE, selector: 'app-contact-detail #txt_Phone', stringValue: '910790576' },
     { type: ActionType.TYPE, selector: 'app-contact-detail #txt_EmailAddress', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
     { type: ActionType.CLICK, selector: 'app-contact-detail #label_EmailAddress' },
-    { type: ActionType.CLICK, selector: 'app-contact-detail #next' },
   ],
+  submitAction: { type: ActionType.CLICK, selector: 'app-contact-detail #next' },
 };
