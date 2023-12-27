@@ -70,6 +70,6 @@ export default <ICJ>{
     { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
     { type: ActionType.TYPE, selector: 'email-with-tele #txtphone', stringValueFunc: async (): Promise<string> => generateRandomTelephone() },
     { type: ActionType.CLICK, selector: 'email-with-tele .checkmark' },
-    { type: ActionType.CLICK, selector: 'email-with-tele #btnEmailClick' },
   ],
+  submitAction: { type: ActionType.CLICK, selector: 'email-with-tele #btnEmailClick' },
 };

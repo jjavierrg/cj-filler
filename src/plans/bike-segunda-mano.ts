@@ -60,6 +60,6 @@ export default <ICJ>{
     { type: ActionType.TYPE, selector: 'cj-process-email-info #phone', stringValue: '910790576' },
     { type: ActionType.CLICK, selector: 'cj-process-email-info #chkTMC' },
     { type: ActionType.CLICK, selector: 'cj-process-email-info #chkCaptcha', optional: true },
-    { type: ActionType.CLICK, selector: 'cj-process-email-info #next' },
   ],
+  submitAction: { type: ActionType.CLICK, selector: 'cj-process-email-info #next' },
 };

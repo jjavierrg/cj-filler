@@ -22,6 +22,6 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'cj-process-kind-of-insurance #Option_NotSure' },
     { type: ActionType.TYPE, selector: 'cj-process-email-info #txt_Email', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
     { type: ActionType.CLICK, selector: 'cj-process-email-info #checkBox_Email' },
-    { type: ActionType.CLICK, selector: 'cj-process-email-info #next' },
   ],
+  submitAction: { type: ActionType.CLICK, selector: 'cj-process-email-info #next' },
 };
