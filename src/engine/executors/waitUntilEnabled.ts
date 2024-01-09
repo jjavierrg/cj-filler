@@ -1,6 +1,7 @@
 import { ExecutorBase } from '../../core/ExecutorBase';
 import { ICJAction } from '../../core/ICJAction';
 import { ActionType } from '../../enums/actions';
+import { waitFor } from '../../helpers/helpers';
 
 export class WaitUntilEnabledExecutor extends ExecutorBase {
   constructor() {
@@ -9,6 +10,6 @@ export class WaitUntilEnabledExecutor extends ExecutorBase {
 
   protected async executeAction(action: ICJAction, element?: HTMLElement): Promise<void> {
     const isElementEnabledCondition = (): boolean => !element.hasAttribute('disabled');
-    this.waitFor(isElementEnabledCondition, action.timeout || 10000);
+    waitFor(isElementEnabledCondition, action.timeout || 10000);
   }
 }

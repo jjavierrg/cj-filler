@@ -19,8 +19,8 @@ export class TypeExecutor extends ExecutorBase {
     const value = await this.getValue(action, element);
     if (value) {
       inputElement.value = value;
-      this.fireEvent('input', inputElement);
-      this.fireEvent('keyup', inputElement);
+      this.fireEvent('input', inputElement, action);
+      this.fireEvent('keyup', inputElement, action);
     }
   }
 
