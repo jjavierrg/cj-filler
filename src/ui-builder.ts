@@ -100,7 +100,7 @@ function createBreak(parent: HTMLElement): void {
   parent.appendChild(breakElement);
 }
 
-export function createUI(parent: HTMLElement, plans: ICJ[], onRunCJ: (plan: ICJ, options: ExecuteOptions) => void): void {
+export function createUI(plans: ICJ[], onRunCJ: (plan: ICJ, options: ExecuteOptions) => void): HTMLElement {
   addStyle();
 
   const container = document.createElement('div');
@@ -111,5 +111,5 @@ export function createUI(parent: HTMLElement, plans: ICJ[], onRunCJ: (plan: ICJ,
   createButton(container, 'Fill CJ', () => onRunCJ(plans[select.selectedIndex], { executeSubmitAction: checkbox.checked }));
 
   container.classList.add('filler');
-  parent.appendChild(container);
+  return container;
 }

@@ -1,6 +1,7 @@
 import { ExecutorBase } from '../../core/ExecutorBase';
 import { ICJAction } from '../../core/ICJAction';
 import { ActionType } from '../../enums/actions';
+import { waitFor } from '../../helpers/helpers';
 
 export class WaitUntilValueExecutor extends ExecutorBase {
   constructor() {
@@ -13,6 +14,6 @@ export class WaitUntilValueExecutor extends ExecutorBase {
       return value.toUpperCase() === action.stringValue.toUpperCase();
     };
 
-    this.waitFor(elementHasValueCondition, action.timeout || 10000);
+    waitFor(elementHasValueCondition, action.timeout || 10000);
   }
 }

@@ -161,7 +161,7 @@ export function generateRandomBirthDate(options: { minAge?: number; maxAge?: num
  */
 export function generateRandomStringBirthDate(options: { minAge?: number; maxAge?: number } = {}): string {
   const birthDate = generateRandomBirthDate(options);
-  return birthDate.toLocaleDateString('es-ES');
+  return birthDate.toLocaleDateString('es-ES', { month: '2-digit', day: '2-digit', year: 'numeric' });
 }
 
 /**

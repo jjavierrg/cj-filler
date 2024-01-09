@@ -9,4 +9,5 @@ export interface ICJAction {
   executeIf?: () => Promise<boolean>;
   optional?: boolean;
   timeout?: number;
+  omitFireEvents?: boolean;
 }

@@ -9,7 +9,8 @@ export default <ICJ>{
     {
       type: ActionType.TYPE,
       selector: 'app-insured-detail #txtCalendarPolicyDate',
-      stringValueFunc: async (): Promise<string> => new Date().toLocaleDateString('es-ES'),
+      stringValueFunc: async (): Promise<string> => new Date().toLocaleDateString('es-ES', { month: '2-digit', day: '2-digit', year: 'numeric' }),
+      omitFireEvents: true,
     },
     {
       type: ActionType.TYPE,

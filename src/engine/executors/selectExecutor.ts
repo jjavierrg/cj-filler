@@ -25,7 +25,7 @@ export class SelectExecutor extends ExecutorBase {
     selectElement.selectedIndex = option.index;
     selectElement.value = option.value;
 
-    this.fireEvent('change', selectElement);
+    this.fireEvent('change', selectElement, action);
   }
 
   private async getOption(selectElement: HTMLSelectElement, action: ICJAction): Promise<HTMLOptionElement> {

@@ -1,26 +1,26 @@
 import { ExecuteOptions } from './core/Engine';
 import { ICJ } from './core/ICJ';
 import { FillerEngine } from './engine/fillerEngine';
+import { waitForElement } from './helpers/helpers';
+import { onElementRemoved } from './helpers/observer';
 import plans from './plans';
 import { createUI } from './ui-builder';
 
 const engine = new FillerEngine();
 
-function waitForElement(selector: string): Promise<void> {
-  return new Promise((resolve) => {
-    const interval = setInterval(() => {
-      const container = document.querySelector(selector);
-      if (container) {
-        clearInterval(interval);
-        resolve();
-      }
-    }, 100);
-  });
-}
-async function BuildUI(parentSelector: string): Promise<void> {
-  await waitForElement(parentSelector);
+async function InsertFillerComponentIntoParent(parentSelector: string, fillerComponent: HTMLElement): Promise<void> {
+  await waitForElement(parentSelector, false, 10000);
   const parent = document.querySelector(parentSelector) as HTMLElement;
-  createUI(parent, plans, RunCJ);
+  parent.appendChild(fillerComponent);
+}
+
+async function BuildUI(parentSelector: string): Promise<void> {
+  const filler = createUI(plans, RunCJ);
+  await InsertFillerComponentIntoParent(parentSelector, filler);
+
+  onElementRemoved(filler, async () => {
+    await InsertFillerComponentIntoParent(parentSelector, filler);
+  });
 }
 
 async function RunCJ(plan: ICJ, options: ExecuteOptions): Promise<void> {
