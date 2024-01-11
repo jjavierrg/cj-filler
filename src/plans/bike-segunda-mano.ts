@@ -33,7 +33,7 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'cj-process-main-driver-data [id="lbl_Soltero / a"] .card-selector', optional: true },
     { type: ActionType.CLICK, selector: 'cj-process-profession #lbl_Directivo .card-selector' },
     { type: ActionType.TYPE, selector: 'cj-process-zipcode #postalCode', stringValue: '28002' },
-    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'cj-process-zipcode .result-txt', stringValue: 'MADRID' },
+    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'cj-process-zipcode .result-txt', stringValue: 'MADRID', timeout: 90000 },
     { type: ActionType.WAIT, numericValue: 1000 },
     { type: ActionType.CLICK, selector: 'cj-process-zipcode #next' },
     { type: ActionType.CLICK, selector: 'app-bike-driver-childs #lbl_No .card-selector' },

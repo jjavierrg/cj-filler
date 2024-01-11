@@ -16,7 +16,7 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'app-pet-birthdate #next' },
     { type: ActionType.CLICK, selector: 'pet-cost #Option_DontKnowItsAdopted' },
     { type: ActionType.TYPE, selector: 'app-zipcode #txt_PostalCode', stringValue: '28002' },
-    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'app-zipcode .result-txt', stringValue: 'MADRID' },
+    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'app-zipcode .result-txt', stringValue: 'MADRID', timeout: 90000 },
     { type: ActionType.WAIT, numericValue: 500 },
     { type: ActionType.CLICK, selector: 'app-zipcode #next' },
     { type: ActionType.CLICK, selector: 'cj-process-kind-of-insurance #Option_NotSure' },

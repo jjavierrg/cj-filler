@@ -52,7 +52,7 @@ export default <ICJ>{
     { type: ActionType.SELECT, selector: 'app-address #driverStreetkind', stringValue: 'Calle' },
     { type: ActionType.TYPE, selector: 'app-address #txtVia', stringValue: 'Sánchez Pacheco' },
     { type: ActionType.TYPE, selector: 'app-address #txtNumero', stringValue: '85' },
-    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'app-address #driverTown span.ng-value-label', stringValue: 'Madrid, Madrid' },
+    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'app-address #driverTown span.ng-value-label', stringValue: 'Madrid, Madrid', timeout: 90000 },
     { type: ActionType.CLICK, selector: 'app-address #btnSkipAddress' },
     { type: ActionType.CLICK, selector: 'residence-duration #radioBetween2and3' },
     { type: ActionType.CLICK, selector: 'who-policy-holder #radioMainDriverSpouse' },
