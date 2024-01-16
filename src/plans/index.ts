@@ -5,5 +5,6 @@ import carSinMatricula from './car-sin-matricula';
 import healthUnico from './health-un-asegurado';
 import healthVarios from './health-varios-asegurados';
 import gatoAdoptado from './pet-gato';
+import perroVeterinario from './pet-perro';
 
-export default <ICJ[]>[carSinMatricula, carSegundaMano, gatoAdoptado, healthUnico, healthVarios, bikeSegundaMano];
+export default <ICJ[]>[carSinMatricula, carSegundaMano, gatoAdoptado, healthUnico, healthVarios, bikeSegundaMano, perroVeterinario];
