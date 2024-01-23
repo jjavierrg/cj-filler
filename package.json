@@ -1,6 +1,6 @@
 {
   "name": "cj-filler",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Simple tool to automatically fill the CJ form",
   "type": "module",
   "author": "José Javier Rodríguez Gallego <jjavierrg@gmail.com>",
