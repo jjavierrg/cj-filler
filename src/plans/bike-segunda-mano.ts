@@ -1,6 +1,6 @@
 import { ICJ } from '../core/ICJ';
 import { ActionType } from '../enums/actions';
-import { generateRandomEmail, generateRandomName, generateRandomStringBirthDate, generateRandomSurname } from '../services/ramdom';
+import { generateRandomEmail, generateRandomName, generateRandomStringBirthDate, generateRandomSurname } from '../services/random';
 
 export default <ICJ>{
   name: '[BIKE] - 2a mano',
