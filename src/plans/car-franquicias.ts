@@ -6,7 +6,7 @@ import {
   generateRandomStringBirthDate,
   generateRandomSurname,
   generateRandomTelephone,
-} from '../services/ramdom';
+} from '../services/random';
 /** */
 export default <ICJ>{
   name: '[CAR] - YaLoTenia - seguro ultimos 60 días - SI',

@@ -188,3 +188,20 @@ function getDNILetter(dni: number): string {
   const dniLetter = dniLetters.charAt(dni % 23);
   return dniLetter;
 }
+
+/**
+ * Generates a date in string format
+ * @param options The options to generate the date.
+ * @param options.addDays The number of days to add to the current date.
+ * @param options.format The format of the date.
+ * @param options.format.locales The locales of the date.
+ * @param options.format.options The options of the date.
+ * @returns A date in string format
+ */
+export function generateStringDate(options: { addDays?: number; format?: { locales?: Intl.LocalesArgument, options?: Intl.DateTimeFormatOptions} } = {}): string {
+  const now = new Date();
+  const addDays = options.addDays || 0;
+  const format = options.format || {locales: 'es-ES', options: { month: '2-digit', day: '2-digit', year: 'numeric' }};
+  now.setDate(now.getDate() + addDays);
+  return now.toLocaleDateString(format.locales, format.options);
+}

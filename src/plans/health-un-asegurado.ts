@@ -1,6 +1,6 @@
 import { ICJ } from '../core/ICJ';
 import { ActionType } from '../enums/actions';
-import { generateRandomEmail, generateRandomStringBirthDate } from '../services/ramdom';
+import { generateRandomEmail, generateRandomStringBirthDate, generateStringDate } from '../services/random';
 
 export default <ICJ>{
   name: '[Health] Un asegurado',
@@ -9,7 +9,7 @@ export default <ICJ>{
     {
       type: ActionType.TYPE,
       selector: 'app-insured-detail #txtCalendarPolicyDate',
-      stringValueFunc: async (): Promise<string> => new Date().toLocaleDateString('es-ES', { month: '2-digit', day: '2-digit', year: 'numeric' }),
+      stringValueFunc: async (): Promise<string> => generateStringDate({addDays: 1}),
       omitFireEvents: true,
     },
     {
