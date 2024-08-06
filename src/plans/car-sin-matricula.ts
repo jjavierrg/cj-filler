@@ -26,7 +26,7 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'purchasing-way #NewCar' },
     { type: ActionType.CLICK, selector: 'usage #PrivateWeekend' },
     { type: ActionType.CLICK, selector: 'parking-type #CollectiveGarageVigilance' },
-    { type: ActionType.CLICK, selector: 'annual-kilometer #radioKMLess5000' },
+    { type: ActionType.CLICK, selector: 'annual-kilometer #radioKM14000To20000' },
     { type: ActionType.CLICK, selector: 'another-vehicle #divOption1 #radioNo' },
     { type: ActionType.CLICK, selector: 'another-vehicle #divOption2 #radioTwo' },
     {
@@ -76,6 +76,15 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'insurence-question #No' },
     { type: ActionType.CLICK, selector: 'claim-details #radioNo' },
     { type: ActionType.CLICK, selector: 'fine-details #No' },
+    {
+      type: ActionType.TYPE,
+      selector: 'expected-policy-buy-date input',
+      stringValueFunc: async (): Promise<string> => {
+        const today = new Date();
+        const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+        return nextMonth.toLocaleDateString('es-ES', { month: '2-digit', day: '2-digit', year: 'numeric' });
+      },
+    },
     { type: ActionType.CLICK, selector: 'expected-policy-buy-date #btn_submit' },
     { type: ActionType.CLICK, selector: 'cover-type #next' },
     { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
