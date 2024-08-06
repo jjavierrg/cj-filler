@@ -24,7 +24,7 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: '#div-No' },
     { type: ActionType.CLICK, selector: '#PrivateWork' },
     { type: ActionType.CLICK, selector: '#StreetParking' },
-    { type: ActionType.CLICK, selector: '#KM11000' },
+    { type: ActionType.CLICK, selector: '#radioKM14000To20000' },
     { type: ActionType.CLICK, selector: 'another-vehicle #divOption1 #span_No-span' },
     { type: ActionType.CLICK, selector: 'another-vehicle #divOption2 #Two-span' },
     {
@@ -65,6 +65,15 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'insurence-question #No' },
     { type: ActionType.CLICK, selector: 'claim-details #radioNo' },
     { type: ActionType.CLICK, selector: 'fine-details #No' },
+    {
+      type: ActionType.TYPE,
+      selector: 'expected-policy-buy-date input',
+      stringValueFunc: async (): Promise<string> => {
+        const today = new Date();
+        const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+        return nextMonth.toLocaleDateString('es-ES', { month: '2-digit', day: '2-digit', year: 'numeric' });
+      },
+    },
     { type: ActionType.CLICK, selector: 'expected-policy-buy-date #btn_submit' },
     { type: ActionType.CLICK, selector: 'cover-type #next' },
     { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
