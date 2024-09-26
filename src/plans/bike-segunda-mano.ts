@@ -62,4 +62,5 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'cj-process-email-info #chkCaptcha', optional: true },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'cj-process-email-info #next' },
+  isEnabledForLocation: (location: string): boolean => location.startsWith('https://seguro-moto'),
 };

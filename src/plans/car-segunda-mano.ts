@@ -13,10 +13,11 @@ export default <ICJ>{
   actions: [
     {
       type: ActionType.CLICK,
-      selector: '#SecondHandFromDealer',
+      selector: 'already-bought #radioNone',
       optional: true,
       executeIf: async (): Promise<boolean> => !window?.location?.hash || window?.location?.hash === '#Q1',
     },
+    { type: ActionType.CLICK, selector: 'just-bought-type #SecondHandFromPerson' },
     { type: ActionType.TYPE, selector: 'app-license-plate input', stringValue: '6458CPS' },
     { type: ActionType.CLICK, selector: '#btnLicensePlateClick' },
     { type: ActionType.CLICK, selector: 'app-license-plate .selector-wrapper .card-selector', timeout: 90000 },
@@ -107,4 +108,5 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'email-with-tele .checkmark' },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'email-with-tele #btnEmailClick' },
+  isEnabledForLocation: (location: string): boolean => location.startsWith('https://seguros-coche'),
 };

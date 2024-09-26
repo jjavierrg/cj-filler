@@ -9,7 +9,7 @@ export default <ICJ>{
     {
       type: ActionType.TYPE,
       selector: 'app-insured-detail #txtCalendarPolicyDate',
-      stringValueFunc: async (): Promise<string> => generateStringDate({addDays: 1}),
+      stringValueFunc: async (): Promise<string> => generateStringDate({ addDays: 1 }),
       omitFireEvents: true,
     },
     {
@@ -26,4 +26,5 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'app-contact-detail #label_EmailAddress' },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'app-contact-detail #next' },
+  isEnabledForLocation: (location: string): boolean => location.startsWith('https://seguro-medico'),
 };
