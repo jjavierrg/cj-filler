@@ -70,10 +70,8 @@ function createCheckbox(parent: HTMLElement, text: string, checked: boolean): HT
 
 function createSelect(parent: HTMLElement, plans: ICJ[]): HTMLSelectElement {
   const select = document.createElement('select');
-  const location = window.location.href;
 
   plans
-    .filter((plan) => plan.isEnabledForLocation(location))
     .sort((a, b) => a.name.localeCompare(b.name))
     .forEach((plan, index) => {
       const option = document.createElement('option');
@@ -106,11 +104,14 @@ export function createUI(plans: ICJ[], onRunCJ: (plan: ICJ, options: ExecuteOpti
   addStyle();
 
   const container = document.createElement('div');
+  const location = window.location.href;
 
-  const select = createSelect(container, plans);
+  const availiablePlans = plans.filter((plan) => plan.isEnabledForLocation(location));
+
+  const select = createSelect(container, availiablePlans);
   const checkbox = createCheckbox(container, 'Auto submit CJ', true);
   createBreak(container);
-  createButton(container, 'Fill CJ', () => onRunCJ(plans[select.selectedIndex], { executeSubmitAction: checkbox.checked }));
+  createButton(container, 'Fill CJ', () => onRunCJ(availiablePlans[select.selectedIndex], { executeSubmitAction: checkbox.checked }));
 
   container.classList.add('filler');
   return container;
