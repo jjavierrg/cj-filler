@@ -75,11 +75,21 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'current-insurer-duration #btn_submit' },
     { type: ActionType.CLICK, selector: '#spanNo-span' },
     { type: ActionType.CLICK, selector: '#No-span' },
-    { type: ActionType.CLICK, selector: '#btn_submit' },
+    {
+      type: ActionType.TYPE,
+      selector: 'expected-policy-buy-date input',
+      stringValueFunc: async (): Promise<string> => {
+        const today = new Date();
+        const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+        return nextMonth.toLocaleDateString('es-ES', { month: '2-digit', day: '2-digit', year: 'numeric' });
+      },
+    },
+    { type: ActionType.CLICK, selector: 'expected-policy-buy-date #btn_submit' },
     { type: ActionType.CLICK, selector: '#thirdPartyGlassFireTheft' },
     { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
     { type: ActionType.TYPE, selector: 'email-with-tele #txtphone', stringValueFunc: async (): Promise<string> => generateRandomTelephone() },
     { type: ActionType.CLICK, selector: 'email-with-tele .checkmark' },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'email-with-tele #btnEmailClick' },
+  isEnabledForLocation: (location: string): boolean => location.startsWith('https://seguros-coche'),
 };

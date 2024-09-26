@@ -25,4 +25,5 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'cj-process-email-info #checkBox_Email' },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'cj-process-email-info #next' },
+  isEnabledForLocation: (location: string): boolean => location.startsWith('https://seguros-para-mascotas'),
 };

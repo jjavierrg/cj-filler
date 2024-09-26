@@ -70,8 +70,10 @@ function createCheckbox(parent: HTMLElement, text: string, checked: boolean): HT
 
 function createSelect(parent: HTMLElement, plans: ICJ[]): HTMLSelectElement {
   const select = document.createElement('select');
+  const location = window.location.href;
 
   plans
+    .filter((plan) => plan.isEnabledForLocation(location))
     .sort((a, b) => a.name.localeCompare(b.name))
     .forEach((plan, index) => {
       const option = document.createElement('option');
