@@ -45,7 +45,7 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'children-at-home #radioYoungerYes' },
     { type: ActionType.CLICK, selector: 'children-at-home #radioAdultNo' },
     { type: ActionType.CLICK, selector: 'children-at-home #btnMainDriverChildSubmit' },
-    { type: ActionType.CLICK, selector: 'vehicle-driver-profession #ComputerTechnician' },
+    { type: ActionType.CLICK, selector: 'vehicle-driver-profession #EngineerArchitect' },
     { type: ActionType.TYPE, selector: 'app-address #txtPostalCode', stringValue: '28002' },
     { type: ActionType.SELECT, selector: 'app-address #driverStreetkind', stringValue: 'Calle' },
     { type: ActionType.TYPE, selector: 'app-address #txtVia', stringValue: 'Sánchez Pacheco' },
