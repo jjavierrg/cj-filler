@@ -29,8 +29,8 @@ export class TypeExecutor extends ExecutorBase {
       return action.stringValue;
     }
 
-    if (action.stringValueFunc !== undefined && action.stringValueFunc !== null) {
-      return await action.stringValueFunc(element);
+    if (action.executeFunc !== undefined && action.executeFunc !== null) {
+      return (await action.executeFunc(element))?.toString() ?? '';
     }
 
     return '';

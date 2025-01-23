@@ -9,7 +9,7 @@ import {
 } from '../services/random';
 
 export default <ICJ>{
-  name: '[CAR] - 2a mano - carfax - todos tipos',
+  name: '[CAR] - Segunda mano - carfax - todos tipos',
   actions: [
     {
       type: ActionType.CLICK,
@@ -31,7 +31,7 @@ export default <ICJ>{
     {
       type: ActionType.TYPE,
       selector: 'vehicle-driver-dob input',
-      stringValueFunc: async (): Promise<string> => generateRandomStringBirthDate({ minAge: 30, maxAge: 50 }),
+      executeFunc: async (): Promise<string> => generateRandomStringBirthDate({ minAge: 30, maxAge: 50 }),
     },
     { type: ActionType.CLICK, selector: 'vehicle-driver-dob #btn_submit' },
     { type: ActionType.CLICK, selector: "div[title='España']" },
@@ -46,32 +46,33 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'children-at-home #radioAdultNo' },
     { type: ActionType.CLICK, selector: 'children-at-home #btnMainDriverChildSubmit' },
     { type: ActionType.CLICK, selector: 'vehicle-driver-profession #EngineerArchitect' },
+    { type: ActionType.CLICK, selector: 'app-address-search #btnSkipAddressSearch' },
+    { type: ActionType.CLICK, selector: 'app-address-search .address-none > a' },
     { type: ActionType.TYPE, selector: 'app-address #txtPostalCode', stringValue: '28002' },
     { type: ActionType.SELECT, selector: 'app-address #driverStreetkind', stringValue: 'Calle' },
     { type: ActionType.TYPE, selector: 'app-address #txtVia', stringValue: 'Sánchez Pacheco' },
     { type: ActionType.TYPE, selector: 'app-address #txtNumero', stringValue: '85' },
-    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'app-address #driverTown span.ng-value-label', stringValue: 'Madrid, Madrid', timeout: 90000 },
+    { type: ActionType.WAIT_UNTIL_VALUE, selector: 'app-address #driverTown > option:nth-child(2)', stringValue: 'Madrid, Madrid', timeout: 90000 },
     { type: ActionType.CLICK, selector: 'app-address #btnSkipAddress' },
     { type: ActionType.CLICK, selector: 'residence-duration #Between4and5' },
     { type: ActionType.CLICK, selector: 'who-policy-holder #MainDriver' },
     { type: ActionType.TYPE, selector: 'app-dni #txtDniNumber', stringValue: '12345678Z' },
     { type: ActionType.CLICK, selector: 'app-dni #btnDniClick' },
-    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtFistName', stringValueFunc: async (): Promise<string> => generateRandomName() },
+    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtFistName', executeFunc: async (): Promise<string> => generateRandomName() },
     {
       type: ActionType.TYPE,
       selector: 'app-policy-holder-name #txtMiddleName',
-      stringValueFunc: async (): Promise<string> => generateRandomSurname(),
+      executeFunc: async (): Promise<string> => generateRandomSurname(),
     },
-    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtLastName', stringValueFunc: async (): Promise<string> => generateRandomSurname() },
+    { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtLastName', executeFunc: async (): Promise<string> => generateRandomSurname() },
     { type: ActionType.CLICK, selector: 'app-policy-holder-name #btnPolicyHolderNameClick' },
-    { type: ActionType.CLICK, selector: 'app-defaulter #defaulterNo' },
     { type: ActionType.CLICK, selector: 'app-isocassional-driver #No' },
     { type: ActionType.CLICK, selector: 'insurence-question #Yes' },
     { type: ActionType.CLICK, selector: 'insurer-name #li36' },
     {
       type: ActionType.SELECT,
       selector: 'policy-expired-date #CJInsuranceDetailsNotNewNotInsuredPolicyExpiredDate_Month',
-      numericValueFunc: async (): Promise<number> => new Date().getMonth() + 2,
+      executeFunc: async (): Promise<number> => new Date().getMonth() + 2,
     },
     {
       type: ActionType.SELECT,
@@ -95,7 +96,7 @@ export default <ICJ>{
     {
       type: ActionType.TYPE,
       selector: 'expected-policy-buy-date input',
-      stringValueFunc: async (): Promise<string> => {
+      executeFunc: async (): Promise<string> => {
         const today = new Date();
         const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
         return nextMonth.toLocaleDateString('es-ES', { month: '2-digit', day: '2-digit', year: 'numeric' });
@@ -103,8 +104,8 @@ export default <ICJ>{
     },
     { type: ActionType.CLICK, selector: 'expected-policy-buy-date #btn_submit' },
     { type: ActionType.CLICK, selector: 'cover-type #next' },
-    { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
-    { type: ActionType.TYPE, selector: 'email-with-tele #txtphone', stringValueFunc: async (): Promise<string> => generateRandomTelephone() },
+    { type: ActionType.TYPE, selector: 'email-with-tele #txtEmail', executeFunc: async (): Promise<string> => generateRandomEmail() },
+    { type: ActionType.TYPE, selector: 'email-with-tele #txtphone', executeFunc: async (): Promise<string> => generateRandomTelephone() },
     { type: ActionType.CLICK, selector: 'email-with-tele .checkmark' },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'email-with-tele #btnEmailClick' },

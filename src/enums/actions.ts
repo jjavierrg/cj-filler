@@ -1,4 +1,5 @@
 export enum ActionType {
+  ASSERT = 'assert',
   CLICK = 'click',
   TYPE = 'type',
   SELECT = 'select',
