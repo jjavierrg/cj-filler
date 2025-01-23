@@ -92,5 +92,5 @@ export default <ICJ>{
     { type: ActionType.CLICK, selector: 'email-with-tele .checkmark' },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'email-with-tele #btnEmailClick' },
-  isEnabledForLocation: (location: string): boolean => location.startsWith('https://seguros-coche'),
+  isEnabledForLocation: (location: string): boolean => location.startsWith('https://seguros-coche') || location.includes('seguros-de-coche/calcular'),
 };
