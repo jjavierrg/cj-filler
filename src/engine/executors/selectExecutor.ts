@@ -30,25 +30,12 @@ export class SelectExecutor extends ExecutorBase {
 
   private async getOption(selectElement: HTMLSelectElement, action: ICJAction): Promise<HTMLOptionElement> {
     const options = Array.from(selectElement.options);
+    const value: number | string | boolean = action.numericValue ?? action.stringValue ?? (await action.executeFunc?.()) ?? '';
 
-    if (action.numericValue !== undefined && action.numericValue !== null) {
-      return options[action.numericValue - 1];
+    if (typeof value === 'number') {
+      return options[value - 1];
     }
 
-    if (action.numericValueFunc) {
-      const index = await action.numericValueFunc();
-      return options[index - 1];
-    }
-
-    if (action.stringValue) {
-      return options.find((option) => option.text === action.stringValue);
-    }
-
-    if (action.stringValueFunc) {
-      const value = await action.stringValueFunc();
-      return options.find((option) => option.text === value);
-    }
-
-    return null;
+    return options.find((option) => option.text === value?.toString());
   }
 }

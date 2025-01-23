@@ -1,4 +1,5 @@
 import { Engine as CoreEngine } from '../core/Engine';
+import { AssertExecutor } from './executors/assertExecutor';
 import { ClickExecutor } from './executors/clickExecutor';
 import { SelectExecutor } from './executors/selectExecutor';
 import { TypeExecutor } from './executors/typeExecutor';
@@ -16,6 +17,7 @@ export class FillerEngine extends CoreEngine {
       new WaitExecutor(),
       new WaitUntilEnabledExecutor(),
       new WaitUntilValueExecutor(),
+      new AssertExecutor(),
     ]);
   }
 }

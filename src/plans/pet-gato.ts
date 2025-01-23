@@ -6,7 +6,7 @@ export default <ICJ>{
   name: '[PET] - Gato - Adoptado',
   actions: [
     { type: ActionType.CLICK, selector: 'pet-type #Option_Cat' },
-    { type: ActionType.TYPE, selector: 'pet-name #PetName', stringValueFunc: async (): Promise<string> => generateRandomName() },
+    { type: ActionType.TYPE, selector: 'pet-name #PetName', executeFunc: async (): Promise<string> => generateRandomName() },
     { type: ActionType.CLICK, selector: 'pet-name #next' },
     { type: ActionType.CLICK, selector: 'pet-crossbreed #lbl_No > .card-selector' },
     { type: ActionType.CLICK, selector: 'pet-breed #Option_312' },
@@ -20,7 +20,7 @@ export default <ICJ>{
     { type: ActionType.WAIT, numericValue: 500 },
     { type: ActionType.CLICK, selector: 'app-zipcode #next' },
     { type: ActionType.CLICK, selector: 'cj-process-kind-of-insurance #Option_NotSure' },
-    { type: ActionType.TYPE, selector: 'cj-process-email-info #txt_Email', stringValueFunc: async (): Promise<string> => generateRandomEmail() },
+    { type: ActionType.TYPE, selector: 'cj-process-email-info #txt_Email', executeFunc: async (): Promise<string> => generateRandomEmail() },
     { type: ActionType.CLICK, selector: 'cj-process-email-info #checkBox_Email' },
   ],
   submitAction: { type: ActionType.CLICK, selector: 'cj-process-email-info #next' },
