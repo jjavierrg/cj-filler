@@ -35,4 +35,4 @@ async function RunCJ(plan: ICJ, options: ExecuteOptions): Promise<void> {
   }
 }
 
-BuildUI('header > .container');
+BuildUI('header > .container, #cj-header > .container');
