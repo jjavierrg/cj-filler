@@ -6,7 +6,8 @@ import carSegundaMano from './car-segunda-mano';
 import carSinMatricula from './car-sin-matricula';
 import healthUnico from './health-un-asegurado';
 import healthVarios from './health-varios-asegurados';
-import hogar from './hogar-propietario';
+import hogarObjetosEspeciales from './hogar-propietario-con-objetos-especiales';
+import hogarJoyas from './hogar-propietario-con-joyas';
 import gatoAdoptado from './pet-gato';
 import perroVeterinario from './pet-perro';
 
@@ -20,5 +21,6 @@ export default <ICJ[]>[
   bikeSegundaMano,
   perroVeterinario,
   carFranquicias,
-  hogar,
+  hogarObjetosEspeciales,
+  hogarJoyas
 ];
