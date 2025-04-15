@@ -21,8 +21,7 @@ export default <ICJ>{
     { type: ActionType.TYPE, selector: 'app-license-plate input', stringValue: '6458CPS' },
     { type: ActionType.CLICK, selector: '#btnLicensePlateClick' },
     { type: ActionType.CLICK, selector: 'app-license-plate .selector-wrapper .card-selector', timeout: 90000 },
-    { type: ActionType.CLICK, selector: '#MainDriver' },
-    { type: ActionType.CLICK, selector: '#div-No' },
+    { type: ActionType.CLICK, selector: 'modification #div-No' },
     { type: ActionType.CLICK, selector: '#PrivateWork' },
     { type: ActionType.CLICK, selector: '#StreetParking' },
     { type: ActionType.CLICK, selector: '#radioKM14000To20000' },
@@ -55,9 +54,8 @@ export default <ICJ>{
     { type: ActionType.WAIT_UNTIL_VALUE, selector: 'app-address #driverTown > option:nth-child(2)', stringValue: 'Madrid, Madrid', timeout: 90000 },
     { type: ActionType.CLICK, selector: 'app-address #btnSkipAddress' },
     { type: ActionType.CLICK, selector: 'residence-duration #Between4and5' },
-    { type: ActionType.CLICK, selector: 'who-policy-holder #MainDriver' },
+    { type: ActionType.CLICK, selector: 'is-main-driver-policy-holder #MainDriver' },
     { type: ActionType.TYPE, selector: 'app-dni #txtDniNumber', stringValue: '12345678Z' },
-    { type: ActionType.CLICK, selector: 'app-dni #btnDniClick' },
     { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtFistName', executeFunc: async (): Promise<string> => generateRandomName() },
     {
       type: ActionType.TYPE,
@@ -65,8 +63,10 @@ export default <ICJ>{
       executeFunc: async (): Promise<string> => generateRandomSurname(),
     },
     { type: ActionType.TYPE, selector: 'app-policy-holder-name #txtLastName', executeFunc: async (): Promise<string> => generateRandomSurname() },
-    { type: ActionType.CLICK, selector: 'app-policy-holder-name #btnPolicyHolderNameClick' },
+    { type: ActionType.CLICK, selector: 'is-main-driver-owner #MainDriver' },
     { type: ActionType.CLICK, selector: 'app-isocassional-driver #No' },
+    { type: ActionType.CLICK, selector: 'app-driver-figures #btn_submit' },
+
     { type: ActionType.CLICK, selector: 'insurence-question #Yes' },
     { type: ActionType.CLICK, selector: 'insurer-name #li36' },
     {
