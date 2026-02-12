@@ -67,8 +67,8 @@ La funcionalidad de grabación te permite crear nuevos planes de ejecución de m
 
 3. **Detener la grabación**: Haz clic en "⏹ Stop Recording" cuando hayas completado el recorrido.
 
-   > [!TIP]
-   > Si detienes la grabación sin haber realizado ninguna interacción (plan vacío), el sistema te preguntará si deseas mostrar el último plan grabado previamente en la sesión. Esto te permite recuperar una grabación anterior en caso de que hayas detenido la grabación por error.
+> [!TIP]
+> Si detienes la grabación sin haber realizado ninguna interacción (plan vacío), el sistema te preguntará si deseas mostrar el último plan grabado previamente en la sesión. Esto te permite recuperar una grabación anterior en caso de que hayas detenido la grabación por error.
 
 4. **Revisar y guardar**: Se mostrará un modal con el código JSON del plan grabado. Este código incluye:
    - Todas las acciones realizadas (clics, escrituras, selecciones)
