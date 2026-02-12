@@ -1,5 +1,7 @@
+import { ActionType } from '../enums/actions';
+
 export interface ICJAction {
-  type: string;
+  type: ActionType;
   selector?: string;
   stringValue?: string;
   numericValue?: number;
