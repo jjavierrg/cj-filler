@@ -1,5 +1,10 @@
-import { ExecuteOptions } from './core/Engine';
-import { ICJ } from './core/ICJ';
+import { ExecuteOptions } from '../core/Engine';
+import { ICJ } from '../core/ICJ';
+import { InteractionRecorder } from '../core/InteractionRecorder';
+import { displayCJ } from './cj-viewer';
+
+const recorder = new InteractionRecorder();
+let lastRecordedCJ: ICJ | null = null;
 
 function addStyle(): void {
   const style = document.createElement('style');
@@ -37,6 +42,45 @@ function addStyle(): void {
       font-size: 15px;
       padding: 19px 35px 19px 24px;
       z-index: 10;
+    }
+     
+    .button-container {
+      padding-top: 10px;
+      display: flex;
+      flex-grow: 1;
+      column-gap: 10px;
+    }
+      
+    .record-inactive{
+      background-color: #dc3545 !important;
+    }
+      
+    .cj-viewer-backdrop {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+    }
+      
+    .cj-viewer-modal {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      min-width: 65vw;
+      min-height: 65vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+    }
+      
+    .cj-viewer-textarea {
+      font-family: monospace;
+      font-size: 12px;
+      padding: 10px;
+      border: 1px solid rgb(204, 204, 204);
+      border-radius: 4px;
+      resize: vertical;
+      flex-grow: 1;
     }`;
   document.head.appendChild(style);
 }
@@ -84,11 +128,13 @@ function createSelect(parent: HTMLElement, plans: ICJ[]): HTMLSelectElement {
   return select;
 }
 
-function createButton(parent: HTMLElement, text: string, onClick: () => void): HTMLButtonElement {
+function createButton(parent: HTMLElement, text: string, className: string = 'solid-main', onClick: () => void): HTMLButtonElement {
   const button = document.createElement('button');
   button.innerText = text;
   button.addEventListener('click', onClick);
-  button.classList.add('btn', 'solid-main', 'text-08-d-regular');
+  button.classList.add('btn', 'text-08-d-regular');
+  button.classList.add(...className.split(' '));
+
   parent.appendChild(button);
 
   return button;
@@ -98,6 +144,37 @@ function createBreak(parent: HTMLElement): void {
   const breakElement = document.createElement('div');
   breakElement.classList.add('break');
   parent.appendChild(breakElement);
+}
+
+function handleRecordButtonClick(recordButton: HTMLButtonElement): void {
+  if (recorder.isRecordingActive) {
+    recordButton.textContent = '⏺ Record CJ';
+    recordButton.classList.add('record-inactive');
+    stopRecording();
+  } else {
+    recordButton.textContent = '⏹ Stop Recording';
+    recordButton.classList.remove('record-inactive');
+    startRecording();
+  }
+}
+
+function startRecording(): void {
+  recorder.startRecording();
+}
+
+function stopRecording(): void {
+  let recorded = recorder.stopRecording();
+
+  if (recorded.actions.length) {
+    lastRecordedCJ = recorded;
+  } else if (lastRecordedCJ?.actions?.length) {
+    const showLast = confirm('No se han registrado nuevas interacciones. ¿Deseas mostrar el último CJ registrado?');
+    if (showLast) {
+      recorded = lastRecordedCJ;
+    }
+  }
+
+  displayCJ(recorded);
 }
 
 export function createUI(plans: ICJ[], onRunCJ: (plan: ICJ, options: ExecuteOptions) => void): HTMLElement {
@@ -111,7 +188,18 @@ export function createUI(plans: ICJ[], onRunCJ: (plan: ICJ, options: ExecuteOpti
   const select = createSelect(container, availiablePlans);
   const checkbox = createCheckbox(container, 'Auto submit CJ', true);
   createBreak(container);
-  createButton(container, 'Fill CJ', () => onRunCJ(availiablePlans[select.selectedIndex], { executeSubmitAction: checkbox.checked }));
+
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('button-container');
+
+  const fillButton = createButton(buttonContainer, 'Fill CJ', 'solid-main', () =>
+    onRunCJ(availiablePlans[select.selectedIndex], { executeSubmitAction: checkbox.checked }),
+  );
+
+  const recordButton = createButton(buttonContainer, '⏺ Record CJ', 'solid-secondary record-inactive', () => handleRecordButtonClick(recordButton));
+  recorder.excludeElements([recordButton, select, checkbox, fillButton, buttonContainer, container]);
+
+  container.appendChild(buttonContainer);
 
   container.classList.add('filler');
   return container;

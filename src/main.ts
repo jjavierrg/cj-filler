@@ -4,7 +4,7 @@ import { FillerEngine } from './engine/fillerEngine';
 import { waitForElement } from './helpers/helpers';
 import { onElementRemoved } from './helpers/observer';
 import plans from './plans';
-import { createUI } from './ui-builder';
+import { createUI } from './ui/ui-builder';
 
 const engine = new FillerEngine();
 

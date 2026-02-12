@@ -40,9 +40,66 @@ Cuando estés en la página de creación de un customer journey, puedes abrir la
 
 ## Uso
 
-Una vez instalado el script, puedes utilizarlo en cualquier página de customer journey. Cuando abras la página, verás que aparece un deplegable y un nuevo botón en la parte superior de la página. El deplegable te permite seleccionar el plan de ejecución que quieres utilizar, y el botón comenzará la ejecución automáticamente. El script rellenará los campos de la página con los valores del plan de ejecución seleccionado y avanzará automáticamente hasta el final del customer journey.
+Una vez instalado el script, puedes utilizarlo en cualquier página de customer journey. Cuando abras la página, verás que aparecen varios controles en la parte superior de la página:
+
+- **Selector de plan**: Desplegable que te permite seleccionar el plan de ejecución que quieres utilizar.
+- **Checkbox "Auto submit CJ"**: Permite controlar si el script debe enviar automáticamente el formulario al final del recorrido.
+- **Botón "Fill CJ"**: Inicia la ejecución del plan seleccionado, rellenando automáticamente los campos.
+- **Botón "Record CJ"**: Permite grabar un nuevo plan de ejecución basado en tus interacciones.
+
+### Ejecutar un plan existente
+
+Selecciona el plan deseado del desplegable y haz clic en "Fill CJ". El script rellenará los campos de la página con los valores del plan de ejecución seleccionado y avanzará automáticamente hasta el final del customer journey.
 
 En caso de que el script no funcione correctamente, prueba a recargar la página y a ejecutarlo de nuevo.
+
+### Grabar un nuevo plan
+
+La funcionalidad de grabación te permite crear nuevos planes de ejecución de manera automática basándote en tus interacciones con la página:
+
+1. **Iniciar la grabación**: Haz clic en el botón "⏺ Record CJ". El botón cambiará a "⏹ Stop Recording" para indicar que la grabación está activa.
+
+2. **Realizar el recorrido**: Interactúa con la página normalmente:
+   - Escribe en los campos de texto
+   - Selecciona opciones de los desplegables
+   - Haz clic en los botones para avanzar
+   - Completa todo el customer journey hasta el final
+
+3. **Detener la grabación**: Haz clic en "⏹ Stop Recording" cuando hayas completado el recorrido.
+
+> [!TIP]
+> Si detienes la grabación sin haber realizado ninguna interacción (plan vacío), el sistema te preguntará si deseas mostrar el último plan grabado previamente en la sesión. Esto te permite recuperar una grabación anterior en caso de que hayas detenido la grabación por error.
+
+4. **Revisar y guardar**: Se mostrará un modal con el código JSON del plan grabado. Este código incluye:
+   - Todas las acciones realizadas (clics, escrituras, selecciones)
+   - Los selectores automáticos para cada elemento
+   - La acción de envío final
+
+5. **Copiar el plan**: Haz clic en "Copy to Clipboard" para copiar el código JSON del plan.
+
+6. **Crear el archivo**: Crea un nuevo archivo en la carpeta `src/plans/` con el contenido copiado. Por ejemplo: `src/plans/mi-nuevo-plan.ts`. El archivo debe exportar un objeto de tipo `ICJ` con la estructura:
+
+```typescript
+import { ActionType } from "../enums/actions";
+import { ICJ } from "../core/ICJ";
+
+export default <ICJ>{
+  name: "Nombre descriptivo del plan",
+  actions: [
+    // Acciones grabadas...
+  ],
+  isEnabledForLocation: (location: string) =>
+    location.includes("url-especifica"),
+  submitAction: {
+    // Acción final de envío...
+  },
+};
+```
+
+7. **Compilar**: Ejecuta `npm run build` para compilar el proyecto. El plan se agregará automáticamente al listado sin necesidad de modificar el archivo `index.ts`.
+
+> [!WARNING]
+> La grabación captura automáticamente las interacciones más comunes, pero puede que necesites ajustar manualmente algunos selectores o acciones para casos específicos. Asegúrate de revisar y probar el plan grabado antes de usarlo en producción.
 
 ## Soporte
 
