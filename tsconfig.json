@@ -2,10 +2,7 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "ES6",
-    "lib": [
-      "ES2022",
-      "DOM"
-    ],
+    "lib": ["ES2022", "DOM"],
     "moduleResolution": "node",
     "rootDir": ".",
     "outDir": "dist",
@@ -21,9 +18,7 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
-    "removeComments": true,
+    "removeComments": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

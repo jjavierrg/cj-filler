@@ -1,14 +1,5 @@
 import { ICJ } from '../core/ICJ';
-import { ActionType } from '../enums/actions';
-
-const typeReplacer = (key: string, val: string): string => {
-  if (key !== 'type') {
-    return val;
-  }
-
-  const enumKey = Object.keys(ActionType).find((k) => ActionType[k as keyof typeof ActionType] === val);
-  return enumKey ? `ActionType.${enumKey}` : val;
-};
+import { convertPlanToTypescript } from '../helpers/converter';
 
 async function copyToClipboard(text: string, copyButton: HTMLButtonElement): Promise<void> {
   try {
@@ -34,8 +25,7 @@ export function displayCJ(plan: ICJ): void {
     return;
   }
 
-  const output = JSON.stringify(plan, typeReplacer, 2).replace(/"ActionType\.(\w+)"/g, 'ActionType.$1');
-
+  const output = convertPlanToTypescript(plan);
   // Create a modal overlay
   const modal = document.createElement('div');
   modal.classList.add('overlay', 'active', 'cj-viewer-backdrop');

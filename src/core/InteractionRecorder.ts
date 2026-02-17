@@ -66,12 +66,11 @@ export class InteractionRecorder {
 
     this.isRecording = false;
 
-    const lastAction = this.recordedActions.pop() || null;
     return {
-      name: 'Recorded Plan',
+      name: `Recorded Plan [${new Date().toLocaleString()}]`,
       actions: this.recordedActions,
       isEnabledForLocation: () => true,
-      submitAction: lastAction,
+      submitAction: { type: ActionType.CLICK },
     };
   }
 
@@ -83,6 +82,11 @@ export class InteractionRecorder {
     if (this.isExcludedElement(target)) return;
     if (this.isTypableElement(target)) return;
     if (target.tagName === 'SELECT') return;
+
+    const pointerEvent = event as PointerEvent;
+    if (pointerEvent && !pointerEvent.pointerType) {
+      return;
+    }
 
     const action: ICJAction = {
       selector: this.generateElementIdentifier(target),
