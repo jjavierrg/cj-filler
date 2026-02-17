@@ -1,6 +1,6 @@
 {
   "name": "cj-filler",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "Simple tool to automatically fill the CJ form",
   "type": "module",
   "author": "José Javier Rodríguez Gallego <jjavierrg@gmail.com>",
@@ -9,6 +9,7 @@
     "start": "node dist/src/main.js",
     "clean": "rimraf coverage dist tmp",
     "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
     "build:watch": "tsc -w -p tsconfig.json",
     "lint": "eslint . --ext .ts",
     "test": "jest --coverage",

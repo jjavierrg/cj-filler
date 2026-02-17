@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from "fs";
 
 /**
  * ConcatAndReplacePlugin concatenates files and replaces {{version}} with version from package.json
@@ -15,13 +15,12 @@ class ConcatAndReplacePlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.afterEmit.tapAsync('ConcatAndReplacePlugin', (_, callback) => {
+    compiler.hooks.afterEmit.tapAsync("ConcatAndReplacePlugin", (_, callback) => {
       const serverUrl = process.env.GITHUB_SERVER_URL;
-      // const repository = process.env.GITHUB_REPOSITORY; // owner/repo
-      const repository = 'mara-r/cj-filler'; // hardcoded for transfer ownership to new org, should be removed once the repo is transferred
+      const repository = process.env.GITHUB_REPOSITORY;
 
       if (!serverUrl || !repository) {
-        console.warn('[ConcatAndReplacePlugin]: Missing GitHub environment variables');
+        console.warn("[ConcatAndReplacePlugin]: Missing GitHub environment variables");
         return callback();
       }
 
@@ -30,12 +29,12 @@ class ConcatAndReplacePlugin {
       const header = atob(encodedHeader);
 
       if (!header) {
-        console.warn('[ConcatAndReplacePlugin]: tampermonkeyHeader env var not set, skipping header addition');
+        console.warn("[ConcatAndReplacePlugin]: tampermonkeyHeader env var not set, skipping header addition");
         return callback();
       }
 
       // Replace {{package.*}} with values from package.json
-      const packageJson = JSON.parse(readFileSync(this.packageJsonPath, 'utf8'));
+      const packageJson = JSON.parse(readFileSync(this.packageJsonPath, "utf8"));
       const regex = /{{package\.(.*?)}}/g;
       let replacedHeader = header.replace(regex, (_, key) => packageJson[key]);
 
@@ -44,14 +43,14 @@ class ConcatAndReplacePlugin {
       const downloadUrl = `${releaseBaseUrl}/download/cj-filler.user.js`;
       replacedHeader = replacedHeader.replace(/{{downloadUrl}}/g, downloadUrl);
 
-      if (!replacedHeader.endsWith('\r\n') && !replacedHeader.endsWith('\n')) {
-        replacedHeader += '\r\n';
+      if (!replacedHeader.endsWith("\r\n") && !replacedHeader.endsWith("\n")) {
+        replacedHeader += "\r\n";
       }
 
       console.log(`[ConcatAndReplacePlugin]: writing header to ${this.file}`);
-      const fileContent = readFileSync(this.file, 'utf8');
+      const fileContent = readFileSync(this.file, "utf8");
       const newFileContent = replacedHeader + fileContent;
-      writeFileSync(this.file, newFileContent, { encoding: 'utf8' });
+      writeFileSync(this.file, newFileContent, { encoding: "utf8" });
 
       callback();
     });

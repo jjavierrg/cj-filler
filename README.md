@@ -67,9 +67,6 @@ La funcionalidad de grabación te permite crear nuevos planes de ejecución de m
 
 3. **Detener la grabación**: Haz clic en "⏹ Stop Recording" cuando hayas completado el recorrido.
 
-> [!TIP]
-> Si detienes la grabación sin haber realizado ninguna interacción (plan vacío), el sistema te preguntará si deseas mostrar el último plan grabado previamente en la sesión. Esto te permite recuperar una grabación anterior en caso de que hayas detenido la grabación por error.
-
 4. **Revisar y guardar**: Se mostrará un modal con el código JSON del plan grabado. Este código incluye:
    - Todas las acciones realizadas (clics, escrituras, selecciones)
    - Los selectores automáticos para cada elemento
@@ -77,26 +74,14 @@ La funcionalidad de grabación te permite crear nuevos planes de ejecución de m
 
 5. **Copiar el plan**: Haz clic en "Copy to Clipboard" para copiar el código JSON del plan.
 
-6. **Crear el archivo**: Crea un nuevo archivo en la carpeta `src/plans/` con el contenido copiado. Por ejemplo: `src/plans/mi-nuevo-plan.ts`. El archivo debe exportar un objeto de tipo `ICJ` con la estructura:
-
-```typescript
-import { ActionType } from "../enums/actions";
-import { ICJ } from "../core/ICJ";
-
-export default <ICJ>{
-  name: "Nombre descriptivo del plan",
-  actions: [
-    // Acciones grabadas...
-  ],
-  isEnabledForLocation: (location: string) =>
-    location.includes("url-especifica"),
-  submitAction: {
-    // Acción final de envío...
-  },
-};
-```
+6. **Crear el archivo**: Crea un nuevo archivo en la carpeta `src/plans/` con el contenido copiado.
 
 7. **Compilar**: Ejecuta `npm run build` para compilar el proyecto. El plan se agregará automáticamente al listado sin necesidad de modificar el archivo `index.ts`.
+
+8. **Usar el nuevo plan**: Recarga la página de customer journey y selecciona tu nuevo plan en el desplegable para ejecutarlo.
+
+> [!TIP]
+> En caso de querer recuperar un plan grabado previamente, puedes acceder a los planes grabados durante la sesión actual desde el menú desplegable del botón de grabación. Simplemente haz clic en el plan que deseas recuperar y se mostrará el modal con el código JSON para copiarlo.
 
 > [!WARNING]
 > La grabación captura automáticamente las interacciones más comunes, pero puede que necesites ajustar manualmente algunos selectores o acciones para casos específicos. Asegúrate de revisar y probar el plan grabado antes de usarlo en producción.
