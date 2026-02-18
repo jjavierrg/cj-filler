@@ -28,6 +28,9 @@ export class FillerApp extends LitElement {
   @state()
   private isViewerOpen: boolean = false;
 
+  @state()
+  private viewerPlan: ICJ | null = null;
+
   constructor() {
     super();
     recordService.excludedFromRecording([this]);
@@ -71,7 +74,7 @@ export class FillerApp extends LitElement {
     const recordedPlans = this.isRecording ? [] : recordService.RecordedPlans;
 
     return html`
-      <filler-viewer .plan=${this.selectedPlan} .isOpen=${this.isViewerOpen} @close=${this.handleViewerClose}></filler-viewer>
+      <filler-viewer .plan=${this.viewerPlan} .isOpen=${this.isViewerOpen} @close=${this.handleViewerClose}></filler-viewer>
       <div class="filler-app-container">
         <filler-plan-selector class="plan-selector" .plans=${availablePlans} @plan-selected=${(e: CustomEvent) => (this.selectedPlan = e.detail)}></filler-plan-selector>
         <filler-checkbox text="Auto submit CJ" .checked=${this.autoSubmit} @checkbox-changed=${(e: CustomEvent) => (this.autoSubmit = e.detail.checked)}></filler-checkbox>
@@ -102,12 +105,12 @@ export class FillerApp extends LitElement {
   }
 
   private showPlan(plan: ICJ): void {
-    this.selectedPlan = plan;
+    this.viewerPlan = plan;
     this.isViewerOpen = true;
   }
 
   private handleViewerClose(): void {
     this.isViewerOpen = false;
-    this.selectedPlan = null;
+    this.viewerPlan = null;
   }
 }
