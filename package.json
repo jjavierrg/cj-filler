@@ -1,6 +1,6 @@
 {
   "name": "cj-filler",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "Simple tool to automatically fill the CJ form",
   "type": "module",
   "author": "José Javier Rodríguez Gallego <jjavierrg@gmail.com>",
@@ -32,5 +32,8 @@
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "lit": "^3.3.2"
   }
 }
