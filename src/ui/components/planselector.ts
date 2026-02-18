@@ -4,7 +4,7 @@ import { ICJ } from '../../core/ICJ';
 
 @customElement('filler-plan-selector')
 export class PlanSelector extends LitElement {
-  @property()
+  @property({ type: Array })
   public plans: ICJ[] = [];
 
   static styles = css`
@@ -20,17 +20,17 @@ export class PlanSelector extends LitElement {
       font-size: 15px;
       padding: 19px 35px 19px 24px;
       z-index: 10;
+      outline: none;
     }
   `;
 
   public render(): TemplateResult {
-    const availablePlans = this.plans.filter((plan) => plan.isEnabledForLocation(window.location.href));
-    if (availablePlans.length > 0) {
+    if (this.plans?.length) {
       this.handlePlanChange(0);
     }
     return html`
       <select @change=${(e: { target: HTMLSelectElement }) => this.handlePlanChange(e.target.selectedIndex)}>
-        ${availablePlans.map((plan) => html`<option value="${plan.name}">${plan.name}</option>`)}
+        ${this.plans.map((plan) => html`<option value="${plan.name}">${plan.name}</option>`)}
       </select>
     `;
   }

@@ -11,10 +11,12 @@ export class FillerCheckbox extends LitElement {
 
   static styles = css`
     .filler-checkbox {
-      font-size: 20px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       gap: 6px;
+      color: white;
+      font-weight: 600;
     }
     [type='checkbox'] {
       --_accent: #3dd092;
@@ -24,10 +26,10 @@ export class FillerCheckbox extends LitElement {
       appearance: none;
       aspect-ratio: 1;
       background: var(--_bg, Field);
-      border: var(--_bdw) solid var(--_bdc, GrayText);
+      border: var(--_bdw) solid var(--_bdc, #e2eaf0);
       border-radius: var(--_bdrs, 0.2em);
       box-sizing: border-box;
-      font-size: 1em;
+      font-size: 20px;
       height: 1em;
       margin: var(--_m, 0.1875em 0.1875em 0.1875em 0.25em);
       position: relative;
