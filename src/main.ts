@@ -4,7 +4,7 @@ import { FillerEngine } from './engine/fillerEngine';
 import { waitForElement } from './helpers/helpers';
 import { onElementRemoved } from './helpers/observer';
 import plans from './plans';
-import { createUI } from './ui/ui-builder';
+import { FillerApp } from './ui/app';
 
 const engine = new FillerEngine();
 
@@ -15,7 +15,9 @@ async function InsertFillerComponentIntoParent(parentSelector: string, fillerCom
 }
 
 async function BuildUI(parentSelector: string): Promise<void> {
-  const filler = createUI(plans, RunCJ);
+  const filler = new FillerApp();
+  filler.plans = plans;
+  filler.onPlanSelected = RunCJ;
   await InsertFillerComponentIntoParent(parentSelector, filler);
 
   onElementRemoved(filler, async () => {
